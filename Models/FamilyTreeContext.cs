@@ -8,6 +8,11 @@ namespace FamilyTreeApi.Models
             : base(options)
         {
         }
-        DbSet<Person> Person { get; set; }
+        public DbSet<Person> Persons { get; set; }
+
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseMySQL("server=localhost;database=FamilyTree;user=root;password=Al3x@nder");
+        // }
     }
 }
