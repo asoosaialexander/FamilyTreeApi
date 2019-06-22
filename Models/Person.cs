@@ -1,5 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FamilyTreeApi.Models
 {
@@ -7,29 +9,9 @@ namespace FamilyTreeApi.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Gender Gender { get; set; }
-        public int BirthYear
-        {
-            get
-            {
-                return BirthYear;
-            }
-            set
-            {
-                if (value > 1900 && value <= DateTime.Now.Year)
-                {
-                    BirthYear = value;
-                }
-                else{
-                    throw new InvalidOperationException("Invalid Birth Year!");
-                }
-            }
-        }
-        public List<Person> Relationships { get; set; }
-    }
-
-    public enum Gender
-    {
-        Male, Female
+        public string Gender { get; set; }
+        public int BirthYear { get; set; }
+        public string Occupation { get; set; }
+        public string Notes { get; set; }
     }
 }
