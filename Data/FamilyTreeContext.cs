@@ -14,6 +14,12 @@ namespace FamilyTreeApi.Models
         }
 
         public DbSet<Person> Person { get; set; }
-        public DbSet<Relation> Relation { get; set; }
+        public DbSet<Spouse> Spouse {get;set;}
+
+        // protected override void OnModelCreating(ModelBuilder modelBuilder){
+        //     modelBuilder.Entity<Person>()
+        //         .HasOne(p=>p.Father)
+        //         .WithOne(p=>p.Mother);
+        // }
     }
 }
