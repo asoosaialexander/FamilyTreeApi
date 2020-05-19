@@ -5,6 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FamilyTreeApi.Models;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace FamilyTreeApi
 {
@@ -40,6 +44,14 @@ namespace FamilyTreeApi
             {
                 options.UseSqlite(Configuration.GetConnectionString("FamilyTreeDbContext"));
             });
+
+            services.Configure<FormOptions>(options =>
+            {
+                options.ValueLengthLimit = int.MaxValue;
+                options.MultipartBodyLengthLimit = int.MaxValue;
+                options.MemoryBufferThreshold = int.MaxValue;
+            });
+
             services.AddControllers();
         }
 
@@ -54,6 +66,13 @@ namespace FamilyTreeApi
             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseRouting();
 

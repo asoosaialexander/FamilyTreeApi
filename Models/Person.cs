@@ -9,14 +9,14 @@ namespace FamilyTreeApi.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int IsAlive { get; set; }
         public int? MotherId { get; set; }
-        // public Person Mother {get;set;}
         public int? FatherId { get; set; }
-        // public Person Father {get;set;}
         public string Gender { get; set; }
         public int BirthYear { get; set; }
         public string Occupation { get; set; }
         public string Residence { get; set; }
-        public byte[] Photo{get;set;}
+        public string Photo { get; set; }
+        public string MaritalStatus {get;set;}
     }
 }

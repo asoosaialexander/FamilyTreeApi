@@ -31,6 +31,8 @@ namespace FamilyTreeApi.Controllers
             personDetail.Id = person.Id;
             personDetail.Name = person.Name;
             personDetail.Gender = person.Gender;
+            personDetail.FatherId=person.FatherId;
+            personDetail.MotherId = person.MotherId;
             var father = _context.Person.SingleOrDefault(p => p.Id == person.FatherId);
             if (father != null)
                 personDetail.FatherName = father.Name;
@@ -40,6 +42,9 @@ namespace FamilyTreeApi.Controllers
             personDetail.Occupation = person.Occupation;
             personDetail.Residence = person.Residence;
             personDetail.BirthYear = person.BirthYear;
+            personDetail.Photo = person.Photo;
+            personDetail.IsAlive = person.IsAlive==1?"ALIVE":"DEAD";
+            personDetail.MaritalStatus = person.MaritalStatus;
 
             if (person.MotherId != null && person.FatherId != null)
             {
@@ -54,10 +59,13 @@ namespace FamilyTreeApi.Controllers
                     foreach (var sibling in data)
                     {
                         string relation = string.Empty;
-                        if (sibling.BirthYear < person.BirthYear)
-                            relation += "Elder ";
-                        if (sibling.BirthYear > person.BirthYear)
-                            relation += "Younger ";
+
+                        if(sibling.BirthYear>0 && personDetail.BirthYear>0){
+                            if (sibling.BirthYear < person.BirthYear)
+                                relation += "Elder ";
+                            if (sibling.BirthYear > person.BirthYear)
+                                relation += "Younger ";
+                        }
 
                         if (sibling.Gender.Equals("Male", StringComparison.OrdinalIgnoreCase))
                             relation += "Brother";
