@@ -41,28 +41,6 @@ namespace FamilyTreeApi.Controllers
                 .Where(p => p.Gender.ToLower() == "female").ToListAsync();
         }
 
-        // [HttpGet("spouses/{id}")]
-        // public async Task<ActionResult<IEnumerable<Person>>> GetSpouses()
-        // {
-        //     var person = await _context.Person.FindAsync(id);
-
-        //     if (person == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     if (person.Gender.ToLower() == "male")
-        //     {
-        //         return await _context.Person
-        //             .Where(p => p.Gender.ToLower() == "female" && p.Id != person.MotherId).ToListAsync();
-        //     }
-        //     else
-        //     {
-        //         return await _context.Person
-        //             .Where(p => p.Gender.ToLower() == "male" && p.Id != person.FatherId).ToListAsync();
-        //     }
-        // }
-
         [HttpGet("spouses/{id}")]
         public async Task<ActionResult<IEnumerable<Person>>> GetSpouses(int id)
         {

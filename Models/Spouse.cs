@@ -1,6 +1,9 @@
-public class Spouse
+namespace FamilyTreeApi.Models
 {
-    public int Id { get; set; }
-    public int HusbandId { get; set; }
-    public int WifeId { get; set; }
+    public class Spouse
+    {
+        public int Id { get; set; }
+        public int HusbandId { get; set; }
+        public int WifeId { get; set; }
+    }
 }

@@ -20,15 +20,4 @@ namespace FamilyTreeApi.Models
         public List<SpouseDetail> Spouses { get; set; }
         public List<Sibling> Siblings { get; set; }
     }
-    public class SpouseDetail
-    {
-        public Person Info { get; set; }
-        public List<Person> Children { get; set; }
-    }
-
-    public class Sibling
-    {
-        public Person Info { get; set; }
-        public string Relation { get; set; }
-    }
 }
